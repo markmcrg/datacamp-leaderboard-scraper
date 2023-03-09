@@ -28,7 +28,6 @@ WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTO
 table = driver.find_element(By.CSS_SELECTOR, 'table')
 headers = [th.text for th in table.find_elements(By.CSS_SELECTOR, "th")]
 
-page = 1
 isStart = True
 pagination_index = 3
 
@@ -52,7 +51,7 @@ while True:
         if pagination_index == 6:
             isStart = False
             pagination_index = 3
-        
+
     if len(page_links) == 7:
         next_page = driver.find_element(By.XPATH, f'//*[@id="leaderboard"]/div/div[2]/div[2]/div/div/nav/ul/li[{pagination_index}]/a')
         pagination_index += 1
@@ -61,7 +60,7 @@ while True:
         if pagination_index == 7:
             isStart = False
             pagination_index = 4
-        
+
     if len(page_links) == 6 and not isStart:
         next_page = driver.find_element(By.XPATH, f'//*[@id="leaderboard"]/div/div[2]/div[2]/div/div/nav/ul/li[{pagination_index}]/a')
         pagination_index += 1
